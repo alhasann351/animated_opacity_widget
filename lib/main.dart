@@ -38,12 +38,33 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Flutter Animated Opacity Widget',
+            Container(
+              height: 100,
+              width: 200,
+              color: Colors.blue,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 50,
+              width: 150,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                child: const Text(
+                  'Animate',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
