@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,6 +25,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  var myOpacity = 1.0;
+  bool isVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,10 +47,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 100,
-              width: 200,
-              color: Colors.blue,
+            AnimatedOpacity(
+              opacity: myOpacity,
+              duration: const Duration(seconds: 2),
+              curve: Curves.easeInOutBack,
+              child: Container(
+                height: 100,
+                width: 200,
+                color: Colors.blue,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -54,7 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 50,
               width: 150,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    if(isVisible){
+                      myOpacity = 0.0;
+                      isVisible = false;
+                    }else{
+                      myOpacity = 1.0;
+                      isVisible = true;
+                    }
+                  });
+                },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 child: const Text(
                   'Animate',
